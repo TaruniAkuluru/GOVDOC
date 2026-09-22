@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route, Link, useParams, useLocation } from "react-router-dom";
 import "./App.css";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://govdoc-guio.onrender.com";
 
 // External official portal reference (used solely in the Service Details page footer)
 const officialWebsites = {
