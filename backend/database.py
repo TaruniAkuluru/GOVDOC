@@ -1,20 +1,16 @@
+import os
 import mysql.connector
-from mysql.connector import Error
-
 
 def get_db_connection():
-    try:
-        connection = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="Taruni#2008",
-            database="govdoc"
-        )
+    connection = mysql.connector.connect(
+        host=os.getenv("DB_HOST"),
+        port=int(os.getenv("DB_PORT", "10208")),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME")
+    )
 
-        if connection.is_connected():
-            return connection
-
-    except Error as e:
-        print("MySQL connection error:", e)
+    if connection.is_connected():
+        return connection
 
     return None

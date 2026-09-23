@@ -25,10 +25,14 @@ def home():
 
 @app.get("/db-test")
 def database_test():
-    connection = get_db_connection()
+    try:
+        connection = get_db_connection()
 
-    if connection:
-        connection.close()
-        return {"message": "Database connection successful"}
+        if connection:
+            connection.close()
+            return {"message": "Database connection successful"}
 
-    return {"message": "Database connection failed"}
+        return {"message": "Database connection failed"}
+
+    except Exception as e:
+        return {"message": "Database connection failed", "error": str(e)}
